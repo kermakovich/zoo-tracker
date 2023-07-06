@@ -1,0 +1,54 @@
+{
+  "bd6e8290-1bec-11ee-be56-0242ac120002" : {
+    "id": "bd6e8290-1bec-11ee-be56-0242ac120002",
+    "name": "cheetah_default",
+    "animalType": "CHEETAH",
+    "healthIndicators" : {
+      "heartRate": 140,
+      "bloodPressure": {
+        "systolic": 150,
+        "diastolic": 100
+      },
+      "temperature": 40.2
+    }
+ },
+  "bd6e84b6-1bec-11ee-be56-0242ac120002" : {
+    "id": "bd6e84b6-1bec-11ee-be56-0242ac120002",
+    "name": "rabbit_default",
+    "animalType": "RABBIT",
+    "healthIndicators" : {
+      "heartRate": 100,
+      "bloodPressure": {
+        "systolic": 130,
+        "diastolic": 90
+      },
+      "temperature": 38.2
+    }
+  },
+  "27dd3e64-1bed-11ee-be56-0242ac120002" : {
+    "id": "27dd3e64-1bed-11ee-be56-0242ac120002",
+    "name": "fox_default",
+    "animalType": "FOX",
+    "healthIndicators" : {
+      "heartRate": 130,
+      "bloodPressure": {
+        "systolic": 180,
+        "diastolic": 100
+      },
+      "temperature": 45.2
+    }
+  },
+  "27dd44ae-1bed-11ee-be56-0242ac120002" : {
+    "id": "27dd44ae-1bed-11ee-be56-0242ac120002",
+    "name": "wolf_default",
+    "animalType": "WOLF",
+    "healthIndicators" : {
+      "heartRate": 150,
+      "bloodPressure": {
+        "systolic": 160,
+        "diastolic": 100
+      },
+      "temperature": 43.4
+    }
+  }
+}
