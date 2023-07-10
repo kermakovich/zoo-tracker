@@ -6,6 +6,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 /**
+ * Represents zoo animal.
+ *
  * @author Ermakovich Kseniya
  */
 @Data
@@ -13,10 +15,25 @@ import lombok.Data;
 @Table(name = "animals")
 public class Animal {
 
+    /**
+     * Unique identifier.
+     */
     @Id
     private Long id;
+
+    /**
+     * Animal name.
+     */
     private String name;
+
+    /**
+     * Type.
+     */
     private AnimalType type;
+
+    /**
+     * Animal description.
+     */
     private String description;
 
 }

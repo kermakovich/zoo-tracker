@@ -54,6 +54,10 @@
         <property name="optional" value="true"/>
     </module>
 
+    <!-- Checks that a package-info.java file exists for each package.     -->
+    <!-- See https://checkstyle.org/checks/javadoc/javadocpackage.html#JavadocPackage -->
+    <module name="JavadocPackage"/>
+
     <!-- Checks whether files end with a new line.                        -->
     <!-- See https://checkstyle.org/config_misc.html#NewlineAtEndOfFile -->
     <module name="NewlineAtEndOfFile"/>
@@ -83,6 +87,15 @@
     </module>
 
     <module name="TreeWalker">
+
+        <!-- Checks for Javadoc comments.                     -->
+        <!-- See https://checkstyle.org/checks/javadoc/index.html -->
+        <module name="InvalidJavadocPosition"/>
+        <module name="JavadocMethod"/>
+        <module name="JavadocType"/>
+        <module name="JavadocVariable"/>
+        <module name="JavadocStyle"/>
+        <module name="MissingJavadocMethod"/>
 
         <!-- Checks for Naming Conventions.                  -->
         <!-- See https://checkstyle.org/config_naming.html -->

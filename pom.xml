@@ -23,6 +23,8 @@
 		<slf4j-api.version>2.0.7</slf4j-api.version>
 		<cactoos.version>0.55.0</cactoos.version>
 		<maven-checkstyle-plugin.version>3.2.2</maven-checkstyle-plugin.version>
+		<kafka-streams-test-utils.version>3.5.0</kafka-streams-test-utils.version>
+		<hamcrest.version>2.2</hamcrest.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -87,6 +89,20 @@
 			<groupId>org.cactoos</groupId>
 			<artifactId>cactoos</artifactId>
 			<version>${cactoos.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-streams-test-utils</artifactId>
+			<version>${kafka-streams-test-utils.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<version>${hamcrest.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

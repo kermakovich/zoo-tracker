@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 import solvd.ermakovich.zt.domain.health.indicators.HealthIndicatorsMessage;
 
 /**
+ * Stream processor for checking animal health indicators.
+ *
  * @author Ermakovich Kseniya
  */
 @Component
@@ -20,15 +22,28 @@ import solvd.ermakovich.zt.domain.health.indicators.HealthIndicatorsMessage;
 @Slf4j
 public class HealthCheckProcessor {
 
+    /**
+     * A Serde that maps json to entity.
+     */
     private final JsonSerde<HealthIndicatorsMessage> jsonSerde;
-    private final Predicate<String, HealthIndicatorsMessage> healthyPredicate;
 
+    /**
+     * A Predicate that filters unhealthy animals.
+     */
+    private final Predicate<String, HealthIndicatorsMessage> healthChecker;
+
+    /**
+     * Creates kafka stream that checks health indicators and records
+     * all unhealthy indicators to {@code health-warnings} topic.
+     *
+     * @param builder kafka streams builder
+     */
     @Autowired
     public void healthWarningsStream(final StreamsBuilder builder) {
         builder.stream("health-indicators",
                         Consumed.with(Serdes.String(), jsonSerde)
                 )
-                .filter(healthyPredicate)
+                .filter(healthChecker)
                 .to("health-warnings", Produced.valueSerde(jsonSerde));
         log.info(builder.build().describe().toString());
     }

@@ -16,15 +16,18 @@ import org.springframework.stereotype.Service;
 public class DefaultHealthIndicatorsMap
         implements Scalar<Map<String, DefaultHealthIndicators>> {
 
-    private static final String JSON_FILE_PATH =
-            "default_health_indicators.json";
+    /**
+     * Contains predefined indicators from JSON file.
+     */
     private Map<String, DefaultHealthIndicators> map;
 
-
+    /**
+     * Loads predefined indicators from JSON file.
+     */
     @PostConstruct
     void init() throws IOException {
         try (InputStream s = getClass().getClassLoader()
-                .getResourceAsStream(JSON_FILE_PATH)) {
+                .getResourceAsStream("default_health_indicators.json")) {
             map =  new ObjectMapper().readValue(
                     s, new TypeReference<>() { }
             );

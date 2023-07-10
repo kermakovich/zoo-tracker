@@ -6,16 +6,20 @@ import lombok.SneakyThrows;
 import org.cactoos.Scalar;
 import org.springframework.stereotype.Service;
 import solvd.ermakovich.zt.domain.health.indicators.DefaultHealthIndicators;
-import solvd.ermakovich.zt.service.DefaultHealthIndicatorService;
+import solvd.ermakovich.zt.service.PredefinedHealthIndicatorsService;
 
 /**
  * @author Ermakovich Kseniya
  */
 @Service
 @RequiredArgsConstructor
-public class DefaultHealthIndicatorServiceImpl
-        implements DefaultHealthIndicatorService {
+public class JsPredefinedHealthIndicators
+        implements PredefinedHealthIndicatorsService {
 
+    /**
+     * Predefined health indicators. Key is unique identifier,
+     * value - {@code DefaultHealthIndicators}
+     */
     private final Scalar<Map<String, DefaultHealthIndicators>>
             defaultHealthIndicators;
 

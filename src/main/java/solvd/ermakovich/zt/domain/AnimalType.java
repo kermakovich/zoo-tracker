@@ -1,6 +1,8 @@
 package solvd.ermakovich.zt.domain;
 
 /**
+ * Possible animal types.
+ *
  * @author Ermakovich Kseniya
  */
 public enum AnimalType {
