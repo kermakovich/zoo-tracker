@@ -30,7 +30,7 @@ public class HealthCheckProcessor {
     /**
      * A Predicate that filters unhealthy animals.
      */
-    private final Predicate<String, HealthIndicatorsMessage> healthChecker;
+    private final Predicate<String, HealthIndicatorsMessage> isAnimalUnhealthy;
 
     /**
      * Creates kafka stream that checks health indicators and records
@@ -43,7 +43,7 @@ public class HealthCheckProcessor {
         builder.stream("health-indicators",
                         Consumed.with(Serdes.String(), jsonSerde)
                 )
-                .filter(healthChecker)
+                .filter(isAnimalUnhealthy)
                 .to("health-warnings", Produced.valueSerde(jsonSerde));
         log.info(builder.build().describe().toString());
     }

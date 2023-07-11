@@ -23,6 +23,11 @@
 		<slf4j-api.version>2.0.7</slf4j-api.version>
 		<cactoos.version>0.55.0</cactoos.version>
 		<maven-checkstyle-plugin.version>3.2.2</maven-checkstyle-plugin.version>
+		<kafka-streams-test-utils.version>3.5.0</kafka-streams-test-utils.version>
+		<hamcrest.version>2.2</hamcrest.version>
+		<jtcop-maven-plugin.version>0.1.16</jtcop-maven-plugin.version>
+		<jacoco.version>0.8.10</jacoco.version>
+		<surefire.version>3.0.0-M8</surefire.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -88,6 +93,20 @@
 			<artifactId>cactoos</artifactId>
 			<version>${cactoos.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-streams-test-utils</artifactId>
+			<version>${kafka-streams-test-utils.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<version>${hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -120,6 +139,62 @@
 						<goals>
 							<goal>check</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.github.volodya-lombrozo</groupId>
+				<artifactId>jtcop-maven-plugin</artifactId>
+				<version>${jtcop-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<rule>
+									<element>CLASS</element>
+									<limits>
+										<limit>
+											<counter>COMPLEXITY</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>0.7</minimum>
+										</limit>
+									</limits>
+									<includes>
+										<include>solvd.ermakovich.zt.kafka.streams.**</include>
+										<include>solvd.ermakovich.zt.service.**</include>
+									</includes>
+								</rule>
+							</rules>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

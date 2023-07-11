@@ -13,14 +13,14 @@ import solvd.ermakovich.zt.service.PredefinedHealthIndicatorsService;
 
 /**
  * Health checker for animals. Represents a predicate of health indicators
- * that are within acceptable limits.
+ * that are not within acceptable limits.
  *
  * @author Ermakovich Kseniya
  */
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class HealthChecker
+public class IsAnimalUnhealthy
         implements Predicate<String, HealthIndicatorsMessage> {
 
     /**
