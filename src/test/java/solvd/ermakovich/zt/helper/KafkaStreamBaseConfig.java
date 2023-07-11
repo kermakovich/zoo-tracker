@@ -12,9 +12,9 @@ import org.springframework.kafka.support.serializer.JsonSerde;
  * @author Ermakovich Kseniya
  */
 @SuppressWarnings("JTCOP.RuleAllTestsHaveProductionClass")
-public class TopologyDriverBaseProperties {
+public class KafkaStreamBaseConfig {
 
-    public Properties getKafkaStreamProperties() {
+    public Properties getProperties() {
         Map<String, Object> props = new HashMap<>(4);
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "zoo-tracker");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");

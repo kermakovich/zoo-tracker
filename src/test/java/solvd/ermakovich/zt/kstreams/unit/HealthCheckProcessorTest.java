@@ -18,7 +18,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import solvd.ermakovich.zt.domain.health.indicators.HealthIndicatorsMessage;
 import solvd.ermakovich.zt.helper.BaseTest;
-import solvd.ermakovich.zt.helper.TopologyDriverBaseProperties;
+import solvd.ermakovich.zt.helper.KafkaStreamBaseConfig;
 import solvd.ermakovich.zt.kafka.srteams.config.topology.HealthCheckProcessor;
 
 /**
@@ -42,8 +42,8 @@ class HealthCheckProcessorTest extends BaseTest {
         healthCheckProcessor.healthWarningsStream(streamsBuilder);
         Topology topology = streamsBuilder.build();
         testDriver = new TopologyTestDriver(
-                topology, new TopologyDriverBaseProperties()
-                .getKafkaStreamProperties()
+                topology,
+                new KafkaStreamBaseConfig().getProperties()
         );
         inputTopic = testDriver.createInputTopic("health-indicators",
                 Serdes.String().serializer(),
