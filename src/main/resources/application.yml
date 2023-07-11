@@ -1,2 +1,33 @@
 server:
   port: ${SERVER_PORT}
+spring:
+  datasource:
+    url: jdbc:postgresql://${DATASOURCE_HOST}/postgres?currentSchema=${SCHEMA}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+#  sql:
+#    init:
+#      mode: always
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  kafka:
+    producer:
+      bootstrap-servers: ${PRODUCER_BOOTSTRAP_SERVERS}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: false
+    streams:
+      application-id: ${KAFKA_APP_ID}
+      bootstrap-servers: ${STREAMS_BOOTSTRAP_SERVERS}
+      properties:
+        default:
+          key:
+            serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+          value:
+            serde: org.springframework.kafka.support.serializer.JsonSerializer
+        state-dir: /tmp/kafka-streams/
+

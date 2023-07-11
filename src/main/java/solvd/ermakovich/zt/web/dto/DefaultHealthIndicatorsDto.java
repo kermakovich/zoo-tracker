@@ -1,20 +1,21 @@
-package solvd.ermakovich.zt.domain.health.indicators;
+package solvd.ermakovich.zt.web.dto;
 
 import lombok.Data;
 import solvd.ermakovich.zt.domain.AnimalType;
+import solvd.ermakovich.zt.domain.health.indicators.HealthIndicators;
 
 /**
- * Predefined animal health indicators.
+ * Represents default health indicators DTO.
  *
  * @author Ermakovich Kseniya
  */
 @Data
-public class DefaultHealthIndicators {
+public class DefaultHealthIndicatorsDto {
 
     /**
      * Unique identifier.
      */
-    private String id;
+    private Long id;
 
     /**
      * Default health indicators name.
