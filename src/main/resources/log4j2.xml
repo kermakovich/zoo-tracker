@@ -12,8 +12,7 @@ Copyright 2023 by the contributors-->
   </Properties>
   <Appenders>
     <Console name="Console" target="SYSTEM_OUT">
-      <PatternLayout
-          pattern="%style{%d{ISO8601}}{white} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable"/>
+      <PatternLayout pattern="%style{%d{ISO8601}}{white} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable"/>
     </Console>
     <RollingFile name="FileAppender" fileName="${BASE_PATH}/zoo-tracker.log" filePattern="${BASE_PATH}/zoo-tracker-%d{yyyy-MM-dd}.log">
       <PatternLayout>
